@@ -1,4 +1,4 @@
-package FPAssignment1;
+package src;
 
 public abstract class Manager<T> {
     // necessary instance variables and methods

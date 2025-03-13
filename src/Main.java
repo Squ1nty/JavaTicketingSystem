@@ -1,4 +1,4 @@
-package FPAssignment1;
+package src;
 public class Main {
   public static void main(String[] args){
     // Welcoming user to the "Super Event" ticketing system

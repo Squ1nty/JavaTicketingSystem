@@ -1,4 +1,4 @@
-package FPAssignment1;
+package src;
 
 public class Event{
     // necessary ingredient 
