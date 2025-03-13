@@ -27,17 +27,26 @@ public class Main {
     System.out.println("5. Checkout");
     System.out.println("6. Quit");
 
+    // Validate the user input
     int number = validatingInput(input);
-    System.out.println("The number you entered was " + number);
     input.close();
+
+    // Just testing if it works
+    System.out.println("The number you entered was " + number);
+    
   }
 
   public static int validatingInput(Scanner input){
+    // Initialise number to have a value stored and eventually returned
     int selectedNumber;
+
+    // While loop that keeps running until user quits (6)
     while(true){
       System.out.print("Please enter a whole number from 1 - 6: ");
+      // Checks if user input is of a (int) type or not
       if(input.hasNextInt()){
         selectedNumber = input.nextInt();
+        // If of int type, then a check is ran to see if input is from 1 to 6
         if(selectedNumber >= 1 && selectedNumber <= 6){
           return selectedNumber;
         }
