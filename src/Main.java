@@ -5,6 +5,10 @@ import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args){
+    menuSelection();
+  }
+
+  public static void menuSelection(){
     // Create a Scanner
     Scanner input = new Scanner(System.in);
 
