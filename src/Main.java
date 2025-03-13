@@ -1,5 +1,6 @@
 package src;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -22,9 +23,28 @@ public class Main {
     System.out.println("5. Checkout");
     System.out.println("6. Quit");
 
-    System.out.print("Please enter a number to proceed: ");
+    int number = validatingInput(input);
+    System.out.println("The number you entered was " + number);
+    input.close();
+  }
 
-    int userChoice = input.nextInt();
-    // System.out.println(userChoice); Checking if code works so far
+  public static int validatingInput(Scanner input){
+    int selectedNumber;
+    while(true){
+      System.out.print("Please enter a whole number from 1 - 6: ");
+      if(input.hasNextInt()){
+        selectedNumber = input.nextInt();
+        if(selectedNumber >= 1 && selectedNumber <= 6){
+          return selectedNumber;
+        }
+        else{
+          System.out.println("Error. Input entered was not a whole number from 1 - 6.");
+        }
+      }
+      else{
+        System.out.println("Error. Input entered was not a whole number.");
+        input.next();
+      }
+    }
   }
 }
