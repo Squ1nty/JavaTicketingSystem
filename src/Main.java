@@ -28,11 +28,32 @@ public class Main {
 
     // Validate the user input
     int number = validatingMenuInput(input);
-    input.close();
+    
+    //Switch-Statements to divert user to relevant menu selection they entered
+    switch(number){
+      case 1:
+        concertList();
+        break;
+      case 2:
+
+        break;
+      case 3:
+
+        break;
+      case 4:
+
+        break;
+      case 5:
+
+        break;
+      case 6:
+
+        break;
+      //No default case since numbers are already checked to be of an integer value from 1 - 6
+    }
 
     // Just testing if it works
-    System.out.println("The number you entered was " + number);
-    
+    System.out.println("\nThe number you entered was " + number);
   }
 
   public static int validatingMenuInput(Scanner input){
@@ -61,6 +82,6 @@ public class Main {
   }
 
   public static void concertList(){
-
+    
   }
 }
