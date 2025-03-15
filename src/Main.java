@@ -28,7 +28,7 @@ public class Main {
     System.out.println("6. Quit");
 
     // Validate the user input
-    int number = validatingInput(input);
+    int number = validatingMenuInput(input);
     input.close();
 
     // Just testing if it works
@@ -36,7 +36,7 @@ public class Main {
     
   }
 
-  public static int validatingInput(Scanner input){
+  public static int validatingMenuInput(Scanner input){
     // Initialise number to have a value stored and eventually returned
     int selectedNumber;
 
@@ -59,5 +59,9 @@ public class Main {
         input.next();
       }
     }
+  }
+
+  public static void concertList(){
+
   }
 }
