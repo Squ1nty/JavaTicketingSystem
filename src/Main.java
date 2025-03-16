@@ -82,6 +82,31 @@ public class Main {
   }
 
   public static void concertList(){
-    
+    /* 
+      Basic QOL improvement, if-statement to display different messages depending
+      on whether or not there are events 
+    */
+    //Temporary variable, will need to turn this into a loop to check number of events
+    int eventsNum = 2;
+
+    if(eventsNum > 0){
+      System.out.println("\nThe current events are: ");
+
+      /*
+        for-Loop to iterate through array/ arraylist of events to list them all in a preformatted print
+        For now, we'll just hardcode a single print TBC later
+      */
+
+      for(int i = 1; i <= eventsNum; i++){
+        System.out.println(i + ". [eventName] |  $[eventPrice]  |  [seatsAvailable] seats  |  [onlineAvailability]");
+      }
+    }
+    else{
+      System.out.println("\nSorry, there are currently no upcoming events!");
+    }
+
+    //Call menuSelection(); after calling events (whether or not there are events) with linebreaks
+    System.out.println("\n\n\n");
+    menuSelection();
   }
 }
