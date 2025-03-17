@@ -35,7 +35,7 @@ public class Main {
         concertList();
         break;
       case 2:
-
+        searchFunction(input);
         break;
       case 3:
 
@@ -51,9 +51,6 @@ public class Main {
         break;
       //No default case since numbers are already checked to be of an integer value from 1 - 6
     }
-
-    // Just testing if it works
-    System.out.println("\nThe number you entered was " + number);
   }
 
   public static int validatingMenuInput(Scanner input){
@@ -71,11 +68,11 @@ public class Main {
           return selectedNumber;
         }
         else{
-          System.out.println("Error. Input entered was not a whole number from 1 - 6.");
+          System.out.println("Error. Input entered was not a whole number from 1 - 6.\n");
         }
       }
       else{
-        System.out.println("Error. Input entered was not a whole number.");
+        System.out.println("Error. Input entered was not a whole number.\n");
         input.next();
       }
     }
@@ -108,5 +105,9 @@ public class Main {
     //Call menuSelection(); after calling events (whether or not there are events) with linebreaks
     System.out.println("\n\n\n");
     menuSelection();
+  }
+
+  public static void searchFunction(Scanner input){
+    System.out.println("\nEnter a keyword: ");
   }
 }
