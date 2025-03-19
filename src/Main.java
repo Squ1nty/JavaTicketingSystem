@@ -109,5 +109,8 @@ public class Main {
 
   public static void searchFunction(Scanner input){
     System.out.println("\nEnter a keyword: ");
+    String keywordInput = input.next();
+
+    System.out.println(keywordInput); //Just testing
   }
 }
