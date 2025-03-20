@@ -108,9 +108,15 @@ public class Main {
   }
 
   public static void searchFunction(Scanner input){
+    //Initially prompt user to enter a keyword, which is stored in a String called keywordInput
     System.out.println("\nEnter a keyword: ");
     String keywordInput = input.next();
 
-    System.out.println(keywordInput); //Just testing
+    /*
+      Before sending it off to be used as a "search term", due to case insensitivity,
+      we should run the string through the pre-built toLowerCase String method.
+    */
+
+    keywordInput = keywordInput.toLowerCase();
   }
 }
