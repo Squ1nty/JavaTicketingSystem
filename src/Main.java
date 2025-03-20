@@ -38,16 +38,16 @@ public class Main {
         searchFunction(input);
         break;
       case 3:
-
+        viewBooking();
         break;
       case 4:
-
+        removeEvent();
         break;
       case 5:
-
+        checkout();
         break;
       case 6:
-
+        quit();
         break;
       //No default case since numbers are already checked to be of an integer value from 1 - 6
     }
@@ -118,5 +118,10 @@ public class Main {
     */
 
     keywordInput = keywordInput.toLowerCase();
+  }
+
+  public static void quit(){
+    System.out.print("\nGoodbye!");
+    System.exit(0);
   }
 }
