@@ -121,15 +121,15 @@ public class Main {
   }
 
   public static void viewBooking(){
-
+    //Call upon the *TBC* userBooking object to display the contents
   }
 
   public static void removeEvent(){
-
+    //Once again a call upon the *TBC* userBooking object where it will be simply removed
   }
 
   public static void checkout(){
-    
+    //Call upon the *TBC* userBooking object but more specifically the price, to then provide yes/no
   }
 
   public static void quit(){
