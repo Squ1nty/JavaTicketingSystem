@@ -26,7 +26,7 @@ public class Main {
     System.out.println("5. Checkout");
     System.out.println("6. Quit");
 
-    // Validate the user input
+    // Validate the user input 
     int number = validatingMenuInput(input);
     
     //Switch-Statements to divert user to relevant menu selection they entered
