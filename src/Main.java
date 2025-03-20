@@ -120,6 +120,18 @@ public class Main {
     keywordInput = keywordInput.toLowerCase();
   }
 
+  public static void viewBooking(){
+
+  }
+
+  public static void removeEvent(){
+
+  }
+
+  public static void checkout(){
+    
+  }
+
   public static void quit(){
     System.out.print("\nGoodbye!");
     System.exit(0);
