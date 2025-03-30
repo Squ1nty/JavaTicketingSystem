@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "src.Main",
+      "projectName": "JavaTicketingSystem_adf34e96"
+    },
+    {
+      "type": "java",
       "name": "Current File",
       "request": "launch",
       "mainClass": "${file}"

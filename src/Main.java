@@ -26,7 +26,7 @@ public class Main {
     System.out.println("5. Checkout");
     System.out.println("6. Quit");
 
-    // Validate the user input
+    // Validate the user input 
     int number = validatingMenuInput(input);
     
     //Switch-Statements to divert user to relevant menu selection they entered
@@ -38,16 +38,16 @@ public class Main {
         searchFunction(input);
         break;
       case 3:
-
+        viewBooking();
         break;
       case 4:
-
+        removeEvent();
         break;
       case 5:
-
+        checkout();
         break;
       case 6:
-
+        quit();
         break;
       //No default case since numbers are already checked to be of an integer value from 1 - 6
     }
@@ -108,9 +108,32 @@ public class Main {
   }
 
   public static void searchFunction(Scanner input){
+    //Initially prompt user to enter a keyword, which is stored in a String called keywordInput
     System.out.println("\nEnter a keyword: ");
     String keywordInput = input.next();
 
-    System.out.println(keywordInput); //Just testing
+    /*
+      Before sending it off to be used as a "search term", due to case insensitivity,
+      we should run the string through the pre-built toLowerCase String method.
+    */
+
+    keywordInput = keywordInput.toLowerCase();
+  }
+
+  public static void viewBooking(){
+    //Call upon the *TBC* userBooking object to display the contents
+  }
+
+  public static void removeEvent(){
+    //Once again a call upon the *TBC* userBooking object where it will be simply removed
+  }
+
+  public static void checkout(){
+    //Call upon the *TBC* userBooking object but more specifically the price, to then provide yes/no
+  }
+
+  public static void quit(){
+    System.out.print("\nGoodbye!");
+    System.exit(0);
   }
 }
