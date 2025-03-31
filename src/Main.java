@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args){
+
+    //Create events to be used later
+    Event JNwJ = new Event("Jazz Night with Joe", 10.5, 3, true);
+    Event YRC = new Event("Youtube Rock Concert", 25.25, 0, true);
+    Event MCM = new Event("Mozart Chamber Music", 50, 2, false);
+    Event HPC = new Event("Harry Potter Concert", 100, 0, false);
+
     menuSelection();
   }
 

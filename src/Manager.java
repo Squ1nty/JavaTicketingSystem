@@ -10,7 +10,4 @@ public abstract class Manager<T> {
     public abstract T[] getBookedItems();
 
     public abstract boolean removeBookedItem(T item);
-
-    // additional methods if necessary
 }
-
