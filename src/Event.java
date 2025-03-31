@@ -2,23 +2,36 @@ package src;
 
 public class Event{
     // necessary ingredient 
+		private String name;
+		private double price;
+		private int seatsAvailable;
+		private boolean onlineAvailability;
 
+	public String setName(String name){
+		return this.name = name;
+	}
 	public String getName(){
-		/* event name */ 
-		return "";
+		return name;
+	}
+
+	public double setPrice(double price){
+		return this.price = price;
 	}
 	public double getPrice(){
-		/* ticket price */
-		return 0.0;
-	}
-	public int getSeats(){
-		/* number of seats (in-person) */
-		return 0;
-	}
-	public boolean onlineOrNot(){
-		/* available online or not*/
-		return false;
+		return price;
 	}
 
-    // more necessary ingredient
+	public int setSeats(int seatsAvailable){
+		return this.seatsAvailable = seatsAvailable;
+	}
+	public int getSeats(){
+		return seatsAvailable;
+	}
+
+	public boolean setOnlineOrNot(boolean onlineAvailability){
+		return this.onlineAvailability = onlineAvailability;
+	}
+	public boolean onlineOrNot(){
+		return onlineAvailability;
+	}
 }
