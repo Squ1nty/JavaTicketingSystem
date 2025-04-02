@@ -4,16 +4,13 @@ import java.util.Scanner;
 
 public class SearchClass implements Searchable{
   private EventRepository repository;
-  private String eventName = "";
-  private Scanner stringScanner = new Scanner(eventName);
+  private String eventName;
   
   public SearchClass(EventRepository repository){
     this.repository = repository;
   }
 
   public Event[] search(String keyword){
-    keyword = keyword.toLowerCase(); //Made everything lowercase to adhere to case "insensitivity"
-
     Event[] eventArray = repository.getAll(); //Obtaining array of current events
     boolean[] keywordMatch = new boolean[eventArray.length];
     String titleSegment;
@@ -44,12 +41,10 @@ public class SearchClass implements Searchable{
 
     for(int i = 0; i < eventArray.length; i++){
       eventName = eventArray[i].getName();
-      System.out.println(eventName);
-      while(stringScanner.hasNext()){
-        titleSegment = stringScanner.next();
-        titleSegment = titleSegment.replaceAll("\\s+", "").toLowerCase();
-        System.out.print(stringScanner.next());
-        if(titleSegment == keyword){
+      Scanner titleSegmentScanner = new Scanner(eventName);
+      while(titleSegmentScanner.hasNext()){
+        titleSegment = titleSegmentScanner.next();
+        if(titleSegment.equalsIgnoreCase(keyword)){
           keywordMatch[i] = true;
           count++;
           break;
@@ -57,9 +52,8 @@ public class SearchClass implements Searchable{
         else{
           keywordMatch[i] = false;
         }
-        System.out.println();
       }
-      System.out.println(keywordMatch[i]);
+      titleSegmentScanner.close();
     }
 
     int countComparison = 0;
