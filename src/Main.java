@@ -148,8 +148,10 @@ public class Main {
 
   public static void bookTicket(Scanner scan, EventRepository repository){
     //Initially prompt user to enter a keyword, which is stored in a String called keywordInput
-    System.out.println("\nEnter a keyword: ");
+    System.out.print("\nEnter a keyword: ");
     String keyword = scan.next();
+
+    System.out.println(keyword);
 
     SearchClass searchTerm = new SearchClass(repository);
     Event[] matchedSearches = searchTerm.search(keyword);

@@ -11,6 +11,7 @@ public class SearchClass implements Searchable{
   }
 
   public Event[] search(String keyword){
+    keyword = keyword.toLowerCase();
     Event[] eventArray = repository.getAll(); //Obtaining array of current events
     boolean[] keywordMatch = new boolean[eventArray.length];
     String titleSegment;
@@ -44,7 +45,8 @@ public class SearchClass implements Searchable{
       Scanner titleSegmentScanner = new Scanner(eventName);
       while(titleSegmentScanner.hasNext()){
         titleSegment = titleSegmentScanner.next();
-        if(titleSegment.equalsIgnoreCase(keyword)){
+        titleSegment = titleSegment.toLowerCase();
+        if(titleSegment.equals(keyword) || titleSegment.contains(keyword)){
           keywordMatch[i] = true;
           count++;
           break;
