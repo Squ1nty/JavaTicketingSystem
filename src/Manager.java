@@ -1,7 +1,6 @@
 package src;
 
 public abstract class Manager<T> {
-    // necessary instance variables and methods
 
     public abstract T[] getAll();
 
