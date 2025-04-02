@@ -11,7 +11,7 @@ public class displaySearch implements DisplayAll{
   }
 
   @Override
-  public void DisplayAllEvents(){
+  public void DisplayAllMatchedEvents(){
     if(eventArray.length != 0){
       for(int i = 0; i < eventArray.length; i++){
         if(eventArray[i].onlineOrNot() == true){

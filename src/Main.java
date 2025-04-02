@@ -157,7 +157,7 @@ public class Main {
     Event[] matchedSearches = searchTerm.search(keyword);
 
     displaySearch matchedEvents = new displaySearch(matchedSearches);
-    matchedEvents.DisplayAllEvents();
+    matchedEvents.DisplayAllMatchedEvents();
   }
 
   public static void viewBooking(){
