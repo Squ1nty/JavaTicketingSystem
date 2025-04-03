@@ -1,7 +1,5 @@
 package src;
 
-import java.util.Scanner;
-
 public class EventRepository extends Manager{
   private Event[] eventArray;
 
@@ -9,9 +7,15 @@ public class EventRepository extends Manager{
     this.eventArray = eventArray;
   }
 
+  public EventRepository(){}
+
   @Override
   public Event[] getAll() {
     return eventArray;
+  }
+
+  public String eventChecks(Event[] matchedSearches){
+    return "";
   }
 
   @Override

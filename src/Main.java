@@ -2,10 +2,10 @@ package src;
 
 import java.util.Scanner;
 
+import src.inputValidation.InputValidation;
+
 public class Main {
   public static void main(String[] args){
-    Scanner scan = new Scanner(System.in);
-
     Event JNwJ = new Event("Jazz Night with Joe", 10.5, 3, true);
     Event YRC = new Event("Youtube Rock Concert", 25.25, 0, true);
     Event MCM = new Event("Mozart Chamber Music", 50, 2, false);
@@ -15,7 +15,7 @@ public class Main {
 
     System.out.println();
     welcomeMessage();
-    menuSelection(eventArray, repository);
+    menuSelection(repository);
 
     /*
       
@@ -32,7 +32,7 @@ public class Main {
     System.out.println("===============================================");
   }
 
-  public static void menuSelection(Event[] eventArray, EventRepository repository){
+  public static void menuSelection(EventRepository repository){
   // Create a Scanner
   Scanner input = new Scanner(System.in);
 
@@ -47,15 +47,15 @@ public class Main {
   System.out.println("6. Quit");
 
   // Validate the user input 
-  int number = validatingMenuInput(input);
+  int number = InputValidation.validatingMenuInput(input, 6);
   
   //Switch-Statements to divert user to relevant menu selection they entered
   switch(number){
     case 1:
-      concertList(eventArray, repository);
+      concertList(repository);
       break;
     case 2:
-      bookTicket(input, repository);
+      bookTicket(repository);
       break;
     case 3:
       viewBooking();
@@ -71,34 +71,11 @@ public class Main {
       break;
     //No default case since numbers are already checked to be of an integer value from 1 - 6
   }
+
+  input.close();
 }
 
-    public static int validatingMenuInput(Scanner input){
-    // Initialise number to have a value stored and eventually returned
-    int selectedNumber;
-
-    // While loop that keeps running until user quits (6)
-    while(true){
-      System.out.print("Please enter a whole number from 1 - 6: ");
-      // Checks if user input is of a (int) type or not
-      if(input.hasNextInt()){
-        selectedNumber = input.nextInt();
-        // If of int type, then a check is ran to see if input is from 1 to 6
-        if(selectedNumber >= 1 && selectedNumber <= 6){
-          return selectedNumber;
-        }
-        else{
-          System.out.println("Error. Input entered was not a whole number from 1 - 6.\n");
-        }
-      }
-      else{
-        System.out.println("Error. Input entered was not a whole number.\n");
-        input.next();
-      }
-    }
-  }
-
-  public static void concertList(Event[] eventArray, EventRepository repository){
+  public static void concertList(EventRepository repository){
     /* 
       Basic QOL improvement, if-statement to display different messages depending
       on whether or not there are events 
@@ -107,6 +84,9 @@ public class Main {
     int eventsNum = Event.getEventCount();
     String eventOnlineAvailability;
     String seatPlural;
+
+    Event[] eventArray = new Event[eventsNum];
+    eventArray = repository.getAll();
 
     if(eventsNum > 0){
       System.out.println("\nThe current events are: ");
@@ -143,21 +123,34 @@ public class Main {
 
     //Call menuSelection(); after calling events (whether or not there are events) with linebreaks
     System.out.println("\n");
-    menuSelection(eventArray, repository);
+    menuSelection(repository);
   }
 
-  public static void bookTicket(Scanner scan, EventRepository repository){
+  public static void bookTicket(EventRepository repository){
+    Scanner scan  = new Scanner(System.in);
+
     //Initially prompt user to enter a keyword, which is stored in a String called keywordInput
     System.out.print("\nEnter a keyword: ");
     String keyword = scan.next();
-
-    System.out.println(keyword);
 
     SearchClass searchTerm = new SearchClass(repository);
     Event[] matchedSearches = searchTerm.search(keyword);
 
     displaySearch matchedEvents = new displaySearch(matchedSearches);
-    matchedEvents.DisplayAllMatchedEvents();
+    matchedEvents.DisplayAllMatchedEvents(scan, repository);
+
+    int listLength = matchedSearches.length + 1;
+
+    int selectedInput = InputValidation.validatingMenuInput(scan, (listLength));
+
+    if(selectedInput == listLength){
+      Main.menuSelection(repository);
+    }
+    else{
+      
+    }
+
+    scan.close();
   }
 
   public static void viewBooking(){

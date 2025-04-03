@@ -1,5 +1,6 @@
 package src;
+import java.util.Scanner;
 
 public interface DisplayAll{
-  void DisplayAllMatchedEvents();
+  void DisplayAllMatchedEvents(Scanner scan, EventRepository repository);
 }

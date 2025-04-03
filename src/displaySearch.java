@@ -1,4 +1,7 @@
 package src;
+import java.util.Scanner;
+
+import src.inputValidation.InputValidation;
 
 public class displaySearch implements DisplayAll{
   
@@ -11,9 +14,14 @@ public class displaySearch implements DisplayAll{
   }
 
   @Override
-  public void DisplayAllMatchedEvents(){
+  public void DisplayAllMatchedEvents(Scanner scan, EventRepository repository){
+    int i;
+
     if(eventArray.length != 0){
-      for(int i = 0; i < eventArray.length; i++){
+
+      System.out.println("\nThe following event(s) are found:\n");
+
+      for(i = 0; i < eventArray.length; i++){
         if(eventArray[i].onlineOrNot() == true){
           eventOnlineAvailability = "Online Available";
         }
@@ -33,6 +41,7 @@ public class displaySearch implements DisplayAll{
         System.out.print("\t|\t" + eventArray[i].getSeats() + seatPlural + "\t|\t" +  eventOnlineAvailability);
         System.out.println();
       }
+      System.out.println((i + 1) + ". Back\n");
     }
     else{
       System.out.println("Sorry! No events match your keyword.");
