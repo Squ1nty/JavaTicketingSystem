@@ -9,6 +9,8 @@ public class Event{
 
 		private static int eventCount = 0;
 
+	public Event(){}
+
 	public Event(String name, double price, int seatsAvailable, boolean onlineAvailability){
 		this.name = name;
 		this.price = price;
