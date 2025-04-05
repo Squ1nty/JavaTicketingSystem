@@ -1,18 +1,16 @@
 package src;
 
-public class Booking{
+public class Booking extends Event{
   
   private int ticketCount;
   private boolean isOnline;
   private Event selectedEvent;
-  private double ticketPrice;
 
   public Booking(){}
-  public Booking(Event selectedEvent, int ticketCount, boolean isOnline, double ticketPrice){
+  public Booking(Event selectedEvent, int ticketCount, boolean isOnline){
     this.selectedEvent = selectedEvent;
     this.ticketCount = ticketCount;
     this.isOnline = isOnline;
-    this.ticketPrice = ticketPrice;
   }
 
   public Event getSelectedEvent(){
@@ -25,9 +23,5 @@ public class Booking{
 
   public boolean onlineOrNot(){
     return isOnline;
-  }
-
-  public double getTicketPrice(){
-    return ticketPrice;
   }
 }

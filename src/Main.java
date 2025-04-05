@@ -17,12 +17,6 @@ public class Main {
     welcomeMessage();
     menuSelection(repository);
 
-    /*
-      
-      To-Do: Once EventRepository is setup, fixup menuSelection and any other methods so that they do not require the param "Event[] eventArray"
-             Do the same for the Scanner object, tyvm
-
-    */
   }
 
   public static void welcomeMessage(){
@@ -141,16 +135,75 @@ public class Main {
 
     int listLength = matchedSearches.length + 1;
 
-    int selectedInput = InputValidation.validatingMenuInput(scan, (listLength));
+    boolean eventTypeSelection;
+    int ticketCount;
+    int selectedInput;
 
-    if(selectedInput == listLength){
-      Main.menuSelection(repository);
+
+    while(true){
+      selectedInput = InputValidation.validatingMenuInput(scan, (listLength));
+
+      if(selectedInput == listLength){
+        Main.menuSelection(repository);
+      }
+      else{ //Essentially every other option but 'Goback'
+        if(matchedSearches[selectedInput - 1].getSeats() > 0){
+          if(matchedSearches[selectedInput - 1].onlineOrNot() == true){
+            eventTypeSelection = EventRepository.getEventTypeSelection();
+            if(eventTypeSelection == true){
+              //Go to ticket method for ONLINE
+              ticketCount = EventRepository.ticketAmountSelector("Online");
+              break;
+            }
+            else{
+              //Go to ticket method for IRL
+              ticketCount = EventRepository.ticketAmountSelector("IRL", matchedSearches[selectedInput - 1]);
+              break;
+            }
+          }
+          else{            
+            eventTypeSelection = EventRepository.getEventTypeSelection();
+            if(eventTypeSelection == true){
+              System.out.println("Sorry! There are no online seats available for this event!");
+            }
+            else{
+              //Go to ticket method for IRL
+              ticketCount = EventRepository.ticketAmountSelector("IRL", matchedSearches[selectedInput - 1]);
+              break;
+            }                                             
+          }
+        }
+        else{
+          if(matchedSearches[selectedInput - 1].onlineOrNot() == true){
+            eventTypeSelection = EventRepository.getEventTypeSelection();
+            if(eventTypeSelection == true){
+              //Go to ticket method for ONLINE
+              ticketCount = EventRepository.ticketAmountSelector("Online");
+              break;
+            }
+            else{
+              //Go to ticket method for IRL
+              System.out.println("Sorry! This event can only be attended online.");
+            }
+          }
+          else{
+            System.out.println("Sorry! There are no seats available for this event!");
+          }
+        }
+      }
     }
-    else{
+
+    //Create the booking object and use the newly obtained ticketCount and eventTypeSelection from a user.
+    boolean isBookingValid;
+    EventRepository bookingCheck = new EventRepository();
+    isBookingValid = bookingCheck.book(matchedSearches[selectedInput - 1], ticketCount, eventTypeSelection);
+    if(isBookingValid){
       
     }
-
-    scan.close();
+    else{
+      System.out.println("\nSorry there was an issue with confirming your booking. Returning you to the main menu.");
+    }
+    menuSelection(repository);
   }
 
   public static void viewBooking(){
